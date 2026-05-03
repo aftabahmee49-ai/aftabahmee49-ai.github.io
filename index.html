@@ -22,12 +22,24 @@
 <input type="text" id="searchBox" placeholder="Movie ya Series dhoondo..." style="width:90%;padding:10px;margin:20px auto;display:block;border-radius:8px;border:none;">
 
 <script>
+<script>
 document.getElementById('searchBox').addEventListener('keyup', function() {
     let filter = this.value.toLowerCase();
     let cards = document.querySelectorAll('.movie-card');
+    let found = 0;
     cards.forEach(card => {
         let title = card.querySelector('h3').innerText.toLowerCase();
-        card.style.display = title.includes(filter) ? '' : 'none';
+        if(title.includes(filter)) {
+            card.style.display = '';
+            found++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    document.getElementById('noResults').style.display = found ? 'none' : 'block';
+});
+</script>
+<p id="noResults" style="text-align:center;color:#888;display:none;margin:20px;">Koi movie nahi mili 😔</p>
     });
 });
 </script>
