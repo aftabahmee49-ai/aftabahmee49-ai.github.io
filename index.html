@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,5 +96,25 @@ document.getElementById('searchBox').addEventListener('keyup', function() {
     </div>
     
     <div class="footer">© 2026 Aftab Movies Hub | For Entertainment Only</div>
+<p id="noResults" style="text-align:center;color:#888;display:none;margin:20px;">Koi movie nahi mili 😔</p>
+
+<script>
+document.getElementById('searchBox').addEventListener('keyup', function() {
+    let filter = this.value.toLowerCase();
+    let cards = document.querySelectorAll('.movie-card');
+    let found = 0;
+    cards.forEach(card => {
+        let title = card.querySelector('h3').innerText.toLowerCase();
+        if(title.includes(filter)) {
+            card.style.display = '';
+            found++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    document.getElementById('noResults').style.display = found ? 'none' : 'block';
+});
+</script>
+</body>
 </body>
 </html>
