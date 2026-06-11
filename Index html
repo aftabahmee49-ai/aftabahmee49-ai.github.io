@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aftab Movies Hub - Movie Edits, VFX Breakdowns & Ending Explained</title>
+<meta name="description" content="Watch latest movie edits, VFX breakdowns and ending explained in Urdu/Hindi. Download free CapCut templates. Aftab Movies Hub - Your Cinema Lab.">
+<style>
+body{font-family:Arial;background:#0a0a0a;color:#fff;margin:0;padding:0}
+header{background:#111;padding:30px;text-align:center;border-bottom:3px solid #e50914}
+header h1{color:#e50914;margin:0;font-size:50px;letter-spacing:2px} /* BARA TITLE */
+.tagline{color:#ccc;font-size:18px;margin-top:10px}
+nav a{color:#fff;text-decoration:none;margin:0 15px;font-weight:bold;font-size:16px}
+.hero{padding:40px 20px;text-align:center}
+.hero h2{color:#e50914;font-size:28px}
+.post{background:#1a1a1a;margin:20px;padding:20px;border-radius:10px}
+.post a{color:#e50914;text-decoration:none;font-size:20px;font-weight:bold}
+.btn{background:#e50914;color:#fff;padding:12px 25px;border-radius:5px;text-decoration:none;display:inline-block;margin:10px;font-weight:bold}
+.yt-btn{background:#FF0000} /* YouTube red color */
+footer{text-align:center;padding:20px;color:#888;font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🎬 AFTAB MOVIES HUB 🎬</h1> <!-- BARA NAAM -->
+<p class="tagline">Your Daily Dose of Movie Edits & VFX Breakdowns</p>
+<a href="https://www.youtube.com/@aftabmovieshub" target="_blank" class="btn yt-btn">▶️ Visit My YouTube Channel</a>
+</header>
+
+<div class="hero">
+<h2>Welcome to Your Cinema Lab 🎥</h2>
+<p>Latest Movie Edits | VFX Breakdowns | Ending Explained in Urdu/Hindi</p>
+</div>
+
+<div class="post">
+<h3>🔥 Trending Now</h3>
+<a href="lucy-2014.html">Lucy 2014 Ending Explained + VFX Breakdown</a>
+<p>Scarlett Johansson uses 100% brain power. See the hidden details & CGI secrets.</p>
+<a href="lucy-2014.html" class="btn">Watch Breakdown →</a>
+</div>
+
+<div class="post">
+<h3>🎁 Free CapCut Templates</h3>
+<p>Get pro movie edit templates. Only 299 PKR - No Watermark - Instant Download</p>
+<a href="#" class="btn">Get Templates Now</a>
+</div>
+
+<footer>
+DISCLAIMER: All content is for educational & commentary purposes under Fair Use. All clips belong to respective owners.<br>
+© 2026 Aftab Movies Hub. All Rights Reserved.
+</footer>
+
+</body>
+</html>
