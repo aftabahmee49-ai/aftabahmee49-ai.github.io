@@ -1,81 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<title>Aftab Movies Hub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aftaab Movie Hub - Watch & Download Movies</title>
-<meta name="description" content="Watch and download latest movies, web series, and Hollywood movies in HD. Free streaming with Aftaab Movie Hub.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial;background:#000;color:#fff}
-header{background:#111;padding:15px 20px;border-bottom:2px solid #e50914}
-.logo{font-size:24px;font-weight:bold;color:#e50914}
-nav{margin-top:10px}
-nav a{color:#fff;text-decoration:none;margin-right:20px;font-size:14px}
-.hero{background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://via.placeholder.com/1200x400/111/000');background-size:cover;padding:60px 20px;text-align:center}
-.hero h1{font-size:40px;color:#e50914;margin-bottom:15px}
-.hero p{font-size:18px;margin-bottom:25px}
-.btn{background:#e50914;color:#fff;padding:12px 30px;text-decoration:none;border-radius:5px;font-weight:bold;display:inline-block}
-.container{max-width:1200px;margin:40px auto;padding:0 20px}
-.movies{display:grid;grid-template-columns:repeat(auto-fit,minmax:250px,1fr);gap:20px;margin-top:30px}
-.movie-card{background:#1a1a1a;border-radius:10px;overflow:hidden;transition:transform 0.3s}
-.movie-card:hover{transform:scale(1.05)}
-.movie-card img{width:100%;height:350px;object-fit:cover}
-.movie-info{padding:15px}
-.movie-info h3{color:#e50914;margin-bottom:8px}
-.movie-info p{font-size:13px;color:#ccc;margin-bottom:10px}
-.movie-btn{background:#e50914;color:#fff;padding:8px 15px;text-decoration:none;border-radius:5px;font-size:13px;display:inline-block}
-footer{background:#111;text-align:center;padding:20px;margin-top:50px;color:#666;font-size:13px}
-footer a{color:#e50914;text-decoration:none;margin:0 10px}
+body{background:#141414;color:#fff;font-family:Arial}
+.header{background:#000;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-size:24px;color:#E50914;font-weight:bold}
+.nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:16px}
+.nav a:hover{color:#E50914}
+.menu-btn{display:none;font-size:28px;background:none;border:none;color:#fff;cursor:pointer}
+
+/* Slider */
+.slider{position:relative;width:100%;height:60vh;overflow:hidden}
+.slide{position:absolute;width:100%;height:100%;opacity:0;transition:opacity 1s}
+.slide.active{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6)}
+.slide-text{position:absolute;bottom:50px;left:5%}
+.slide-text h1{font-size:48px;margin-bottom:10px}
+.slide-text p{font-size:18px;max-width:500px}
+
+/* Cards */
+.container{padding:40px 5%;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#181818;border-radius:6px;overflow:hidden;transition:0.3s}
+.card:hover{transform:scale(1.05);box-shadow:0 10px 25px rgba(229,9,20,0.5)}
+.card img{width:100%;height:350px;object-fit:cover}
+.card h2{color:#E50914;padding:12px 15px 0;font-size:20px}
+.card p{padding:8px 15px;color:#ccc;font-size:14px}
+.btn{padding:10px 15px;margin:10px 5px 15px;border-radius:4px;border:none;font-weight:bold;cursor:pointer}
+.btn-red{background:#E50914;color:#fff}
+.btn-outline{background:transparent;border:1px solid #E50914;color:#E50914}
+
+.footer{text-align:center;padding:20px;color:#777;font-size:14px}
+.footer a{color:#E50914;text-decoration:none;margin:0 8px}
+
+/* Mobile */
+@media(max-width:768px){
+.nav{display:none;position:absolute;top:60px;left:0;width:100%;background:#000;padding:20px;text-align:center}
+.nav.active{display:block}
+.nav a{display:block;margin:15px 0}
+.menu-btn{display:block}
+.slide-text h1{font-size:28px}
+.slide-text p{font-size:14px}
 </style>
 </head>
 <body>
 
-<header>
-<div class="logo">🎬 Aftaab Movie Hub</div>
-<nav>
-<a href="index.html">Home</a>
+<!-- Header + Mobile Menu -->
+<div class="header">
+<div class="logo">🎬 Aftab Movies Hub</div>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<div class="nav" id="nav">
+<a href="#">Home</a>
 <a href="#">Movies</a>
 <a href="#">Web Series</a>
-<a href="contact.md">Contact</a>
-<a href="disclaimer.md">Disclaimer</a>
-<a href="privacy-policy.md">Privacy</a>
-</nav>
-</header>
+<a href="#">Reviews</a>
+<a href="#">Contact</a>
+</div>
+</div>
 
-  <img src="https://image.tmdb.org/t/p/w500/czembW0Rk1Ke7lCJGahk0lD0vUl.jpg" alt="The Witcher">
-  <h3>The Witcher</h3>
-  <p>3 timelines, 1 destiny. Geralt, Yennefer, Ciri story explained in Urdu/Hindi with VFX breakdown.</p>
-  <a href="the-witcher-review.html" class="movie-btn">Read Full Review</a>
-  <a href="https://www.netflix.com/title/80189685" target="_blank" rel="nofollow" style="background: #229954; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; display: inline-block; margin: 10px 5px 0 0;">Watch on Netflix</a>
+<!-- Slider -->
+<div class="slider">
+<div class="slide active">
+<img src="witcher-banner.jpg" alt="The Witcher">
+<div class="slide-text">
+<h1>The Witcher</h1>
+<p>3 timelines, 1 destiny. Full story explained in Urdu/Hindi</p>
+<button class="btn btn-red" onclick="window.open('https://www.netflix.com/title/80189685','_blank')">Watch on Netflix</button>
 </div>
-  
-<div id="trending" style="background: #111; padding: 20px; border-radius: 12px; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
-  
-  <img src="movie-image.jpg" alt="Lucy 2014" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
-  
-  <h2 style="color: #ff0000; margin: 10px 0;">Lucy 2014</h2>
-  
-  <p style="color: #ccc; line-height: 1.6;">
-    When her brain reaches 100% capacity, she becomes god. 
-    Full ending explained + VFX breakdown in Urdu/Hindi.
-  </p>
-  
-  <a href="lucy-2014-review.html" style="background: #ff0000; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; display: inline-block; margin: 10px 5px 0 0;">
-    Read Full Review
-  </a>
-  
-<a href="https://www.netflix.com/search?q=Lucy%202014" target="_blank" rel="nofollow" style="background: #229954; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; display: inline-block; margin: 10px 5px 0 0;">Watch Legally on Netflix</a>
-  
 </div>
-<footer>
-<p>© 2026 Aftaab Movie Hub | All Rights Reserved</p>
-<p>
-<a href="disclaimer.md">Disclaimer</a> | 
-<a href="privacy-policy.md">Privacy Policy</a> | 
-<a href="contact.md">Contact Us</a>
-</p>
-</footer>
+<div class="slide">
+<img src="lucy-banner.jpg" alt="Lucy">
+<div class="slide-text">
+<h1>Lucy 2014</h1>
+<p>When brain reaches 100% capacity, she becomes god</p>
+<button class="btn btn-red" onclick="window.open('https://www.netflix.com/search?q=lucy','_blank')">Watch on Netflix</button>
+</div>
+</div>
+</div>
+
+<!-- Movie Cards -->
+<div class="container">
+<div class="card">
+<img src="witcher-poster.jpg" alt="The Witcher">
+<h2>The Witcher</h2>
+<p>Geralt, Yennefer, Ciri story + VFX breakdown</p>
+<button class="btn btn-red">Read Full Review</button>
+<button class="btn btn-outline" onclick="window.open('https://www.netflix.com/title/80189685','_blank')">Watch on Netflix</button>
+</div>
+
+<div class="card">
+<img src="lucy-poster.jpg" alt="Lucy 2014">
+<h2>Lucy 2014</h2>
+<p>Full ending explained + VFX breakdown</p>
+<button class="btn btn-red">Read Full Review</button>
+<button class="btn btn-outline" onclick="window.open('https://www.netflix.com/search?q=lucy','_blank')">Watch on Netflix</button>
+</div>
+</div>
+
+<div class="footer">
+© 2026 Aftab Movies Hub | All Rights Reserved<br>
+<a href="#">Disclaimer</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+</div>
+
+<script>
+// Mobile menu toggle
+function toggleMenu(){
+document.getElementById('nav').classList.toggle('active');
+}
+
+// Slider auto change
+let slides = document.querySelectorAll('.slide');
+let current = 0;
+setInterval(()=>{
+slides[current].classList.remove('active');
+current = (current + 1) % slides.length;
+slides[current].classList.add('active');
+}, 4000);
+</script>
 
 </body>
 </html>
