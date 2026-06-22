@@ -1,82 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Aftab Movies Hub</title>
+<title>Aftab Movies Hub - Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{background:#141414;color:#fff;font-family:Arial}
-.header{background:#000;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
-.logo{font-size:24px;color:#E50914;font-weight:bold}
-.nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:16px}
-.nav a:hover{color:#E50914}
-.menu-btn{display:none;font-size:28px;background:none;border:none;color:#fff;cursor:pointer}
-
-section{padding:60px 5%}
-h2{font-size:32px;color:#E50914;margin-bottom:30px;text-align:center}
-
-/* Slider */
-.slider{position:relative;width:100%;height:60vh;overflow:hidden}
-.slide{position:absolute;width:100%;height:100%;opacity:0;transition:opacity 1s}
-.slide.active{opacity:1}
-.slide img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6)}
-.slide-text{position:absolute;bottom:50px;left:5%}
-.slide-text h1{font-size:48px;margin-bottom:10px}
-.slide-text p{font-size:18px;max-width:500px}
-
-/* Cards */
-.container{padding:20px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:#181818;border-radius:6px;overflow:hidden;transition:0.3s}
-.card:hover{transform:scale(1.05);box-shadow:0 10px 25px rgba(229,9,20,0.5)}
-.card img{width:100%;height:350px;object-fit:cover}
-.card h3{color:#E50914;padding:12px 15px 0;font-size:20px}
-.card p{padding:8px 15px;color:#ccc;font-size:14px}
-.btn{padding:10px 15px;margin:10px 5px 15px;border-radius:4px;border:none;font-weight:bold;cursor:pointer}
-.btn-red{background:#E50914;color:#fff}
-.btn-outline{background:transparent;border:1px solid #E50914;color:#E50914}
-.btn-green{background:#25D366;color:#fff}
-
-/* Contact */
-.contact-box{background:#181818;padding:40px;border-radius:8px;text-align:center;max-width:500px;margin:auto}
-.contact-box p{font-size:18px;margin:15px 0;color:#ccc}
-
-.footer{text-align:center;padding:20px;color:#777;font-size:14px}
-.footer a{color:#E50914;text-decoration:none;margin:0 8px}
-
-/* Mobile */
-@media(max-width:768px){
-.nav{display:none;position:absolute;top:60px;left:0;width:100%;background:#000;padding:20px;text-align:center}
-.nav.active{display:block}
-.nav a{display:block;margin:15px 0}
-.menu-btn{display:block}
-.slide-text h1{font-size:28px}
-.slide-text p{font-size:14px}
-h2{font-size:24px}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Header + Mobile Menu -->
+<!-- Header -->
 <div class="header">
 <div class="logo">🎬 Aftab Movies Hub</div>
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
 <div class="nav" id="nav">
-<a href="#home">Home</a>
-<a href="#movies">Movies</a>
-<a href="#webseries">Web Series</a>
-<a href="#reviews">Reviews</a>
-<a href="#contact">Contact</a>
+<a href="index.html">Home</a>
+<a href="movies.html">Movies</a>
+<a href="webseries.html">Web Series</a>
+<a href="reviews.html">Reviews</a>
+<a href="contact.html">Contact</a>
 </div>
 </div>
 
-<!-- Home Section - Slider -->
-<section id="home">
+<!-- Slider Only on Home -->
+<section>
 <div class="slider">
 <div class="slide active">
 <img src="witcher-thumb.jpg" alt="The Witcher">
 <div class="slide-text">
 <h1>The Witcher Explained</h1>
-<p>Understand 3 timelines in 1 minute. Full VFX breakdown</p>
+<p>Understand 3 timelines in 1 minute</p>
 <button class="btn btn-red" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch on YouTube</button>
 </div>
 </div>
@@ -84,107 +35,18 @@ h2{font-size:24px}
 <img src="lucy-thumb.jpg" alt="Lucy">
 <div class="slide-text">
 <h1>Lucy 2014 Ending</h1>
-<p>What happens at 100% brain capacity? Explained in 60 seconds</p>
+<p>What happens at 100% brain capacity?</p>
 <button class="btn btn-red" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch on YouTube</button>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Movies Section -->
-<section id="movies">
-<h2>🎬 Movies Explained</h2>
-<div class="container">
-<div class="card">
-<img src="lucy-poster.jpg" alt="Lucy 2014">
-<h3>Lucy 2014</h3>
-<p>Full ending explained + VFX breakdown</p>
-<button class="btn btn-red">Read Review</button>
-<button class="btn btn-outline" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch on YouTube</button>
-</div>
-<div class="card">
-<img src="oppenheimer-poster.jpg" alt="Oppenheimer">
-<h3>Oppenheimer</h3>
-<p>The story of building the bomb in 60 seconds</p>
-<button class="btn btn-red">Read Review</button>
-<button class="btn btn-outline" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch on YouTube</button>
-</div>
-</div>
-</section>
-
-<!-- Web Series Section -->
-<section id="webseries">
-<h2>📺 Web Series Explained</h2>
-<div class="container">
-<div class="card">
-<img src="witcher-poster.jpg" alt="The Witcher">
-<h3>The Witcher</h3>
-<p>Geralt, Yennefer, Ciri story + VFX breakdown</p>
-<button class="btn btn-red">Read Review</button>
-<button class="btn btn-outline" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch on YouTube</button>
-</div>
-<div class="card">
-<img src="moneyheist-poster.jpg" alt="Money Heist">
-<h3>Money Heist</h3>
-<p>Professor's plan explained in 1 minute</p>
-<button class="btn btn-red">Read Review</button>
-<button class="btn btn-outline" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch on YouTube</button>
-</div>
-</div>
-</section>
-
-<!-- Reviews Section -->
-<section id="reviews">
-<h2>⭐ Latest Reviews</h2>
-<div class="container">
-<div class="card">
-<img src="review-thumb.jpg" alt="Review">
-<h3>Top 5 VFX Mistakes 2026</h3>
-<p>Hollywood movie mistakes you probably missed</p>
-<button class="btn btn-red" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch Review</button>
-</div>
-</div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact">
-<h2>📞 Contact Us</h2>
-<div class="contact-box">
-<p><b>Aftab Movies Hub</b></p>
-<p>Movie & Web Series Reviews in Urdu/Hindi</p>
-<p>📧 Email: aftabahmee49@gmail.com</p>
-<p>📱 WhatsApp: +92 3141020841</p>
-<button class="btn btn-green" onclick="window.open('https://wa.me/923XXXXXXXXXX','_blank')">Chat on WhatsApp</button>
-<button class="btn btn-red" onclick="window.open('https://youtube.com/@YOUR_CHANNEL','_blank')">Subscribe on YouTube</button>
-</div>
-</section>
-
 <div class="footer">
 © 2026 Aftab Movies Hub | All Rights Reserved<br>
-<a href="#contact">Disclaimer</a> | <a href="#contact">Privacy Policy</a> | <a href="#contact">Contact Us</a>
+<a href="contact.html">Disclaimer</a> | <a href="contact.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a>
 </div>
 
-<script>
-// Mobile menu toggle
-function toggleMenu(){
-document.getElementById('nav').classList.toggle('active');
-}
-// Close menu after clicking a link
-document.querySelectorAll('.nav a').forEach(link => {
-link.addEventListener('click', () => {
-document.getElementById('nav').classList.remove('active');
-});
-});
-
-// Auto slider change every 4 seconds
-let slides = document.querySelectorAll('.slide');
-let current = 0;
-setInterval(()=>{
-slides[current].classList.remove('active');
-current = (current + 1) % slides.length;
-slides[current].classList.add('active');
-}, 4000);
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
