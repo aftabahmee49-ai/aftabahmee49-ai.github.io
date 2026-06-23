@@ -33,6 +33,27 @@ h2{font-size:32px;color:#E50914;margin-bottom:30px;text-align:center}
 .slider{height:40vh}
 .slide-text h1{font-size:28px}
 </style>
+  <script>
+// Mobile menu toggle - ☰ button ke liye
+function toggleMenu(){
+    document.getElementById('nav').classList.toggle('active');
+}
+
+// Auto slider - 4 sec baad khud slide change karega
+let slides = document.querySelectorAll('.slide');
+if(slides.length > 0){
+    let current = 0;
+
+    // Pehle wale slide ko active rakho
+    slides[0].classList.add('active');
+
+    setInterval(()=>{
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }, 4000);
+}
+  </script>
 </head>
 <body>
 </head>
