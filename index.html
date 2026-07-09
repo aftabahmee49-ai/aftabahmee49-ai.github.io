@@ -1,104 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Aftab Movies Hub - Home</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aftab Movies Hub</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-* {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{background:#141414;color:#fff;font-family:Arial}
-.header{background:#000;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:2px solid #E50914}
-.logo{font-size:24px;color:#E50914;font-weight:bold}
-.nav a{color:#fff;text-decoration:none;margin-left:20px;font-size:16px}
-.nav a:hover{color:#E50914}
-.menu-btn{display:none;font-size:28px;background:none;border:none;color:#fff;cursor:pointer}
-section{padding:60px 5%}
-h2{font-size:32px;color:#E50914;margin-bottom:30px;text-align:center}
-.slider{position:relative;width:100%;height:60vh;overflow:hidden;border-radius:8px}
-.slide{position:absolute;width:100%;height:100%;opacity:0;transition:opacity 1s}
-.slide.active{opacity:1}
-.slide img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6)}
-.slide-text{position:absolute;bottom:50px;left:5%}
-.slide-text h1{font-size:48px;margin-bottom:10px;text-shadow:2px 2px 10px #000}
-.slide-text p{font-size:18px;max-width:500px;text-shadow:1px 1px 5px #000}
-.btn{padding:10px 15px;margin:10px 5px 15px;border-radius:4px;border:none;font-weight:bold;cursor:pointer}
-.btn-red{background:#E50914;color:#fff}
-.btn-red:hover{background:#b20710}
-.footer{text-align:center;padding:20px;color:#777;font-size:14px;border-top:1px solid #333;margin-top:40px}
-.footer a{color:#E50914;text-decoration:none;margin:0 8px}
-@media(max-width:768px){
-.nav{display:none;position:absolute;top:60px;left:0;width:100%;background:#000;padding:20px;text-align:center}
-.nav.active{display:block}
-.nav a{display:block;margin:15px 0}
-.menu-btn{display:block}
-.slider{height:40vh}
-.slide-text h1{font-size:28px}
+body{
+  font-family:Arial; 
+  background:#111; 
+  color:white; 
+  display:flex; 
+  justify-content:center; 
+  align-items:center; 
+  min-height:100vh; 
+  margin:0; 
+  padding:20px
+}
+.box{
+  background:#222; 
+  padding:30px; 
+  border-radius:10px; 
+  width:320px; 
+  text-align:center
+}
+input{
+  width:90%; 
+  padding:10px; 
+  margin:10px 0; 
+  border:none; 
+  border-radius:5px; 
+  background:#333; 
+  color:white
+}
+button{
+  width:95%; 
+  padding:12px; 
+  background:red; 
+  color:white; 
+  border:none; 
+  border-radius:5px; 
+  cursor:pointer; 
+  font-weight:bold; 
+  font-size:16px
+}
+a{color:skyblue; cursor:pointer}
+#videos{display:none; text-align:center; width:100%}
+.video{margin:20px auto}
+h2{color:red}
 </style>
-  <script>
-// Mobile menu toggle - ☰ button ke liye
-function toggleMenu(){
-    document.getElementById('nav').classList.toggle('active');
-}
-
-// Auto slider - 4 sec baad khud slide change karega
-let slides = document.querySelectorAll('.slide');
-if(slides.length > 0){
-    let current = 0;
-
-    // Pehle wale slide ko active rakho
-    slides[0].classList.add('active');
-
-    setInterval(()=>{
-        slides[current].classList.remove('active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('active');
-    }, 4000);
-}
-  </script>
-</head>
-<body>
 </head>
 <body>
 
-<!-- Header -->
-<div class="header">
-<div class="logo">🎬 Aftab Movies Hub</div>
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
-<div class="nav" id="nav">
-<a href="index.html">Home</a>
-<a href="movies.html">Movies</a>
-<a href="webseries.html">Web Series</a>
-<a href="reviews.html">Reviews</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-
-<!-- Slider Only on Home -->
-<section>
-<div class="slider">
-<div class="slide active">
-<img src="witcher-thumb.jpg" alt="The Witcher">
-<div class="slide-text">
-<h1>The Witcher Explained</h1>
-<p>Understand 3 timelines in 1 minute</p>
-<button class="btn btn-red" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch on YouTube</button>
-</div>
-</div>
-<div class="slide">
-<img src="lucy-thumb.jpg" alt="Lucy">
-<div class="slide-text">
-<h1>Lucy 2014 Ending</h1>
-<p>What happens at 100% brain capacity?</p>
-<button class="btn btn-red" onclick="window.open('https://youtube.com/shorts/YOUR_SHORT_ID','_blank')">Watch on YouTube</button>
-</div>
-</div>
-</div>
-</section>
-
-<div class="footer">
-© 2026 Aftab Movies Hub | All Rights Reserved<br>
-<a href="contact.html">Disclaimer</a> | <a href="contact.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a>
+<div class="box" id="authBox">
+  <h2>🎬 Aftab Movies Hub</h2>
+  <div id="loginForm">
+    <h3>Login</h3>
+    <input type="email" id="loginEmail" placeholder="Enter Email">
+    <input type="password" id="loginPass" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <a onclick="showSignup()">Sign Up</a></p>
+  </div>
+  
+  <div id="signupForm" style="display:none">
+    <h3>Sign Up</h3>
+    <input type="email" id="signupEmail" placeholder="Enter Email">
+    <input type="password" id="signupPass" placeholder="Enter Password">
+    <button onclick="signup()">Sign Up</button>
+    <p>Already have an account? <a onclick="showLogin()">Login</a></p>
+  </div>
 </div>
 
-<script src="script.js"></script>
+<div id="videos">
+  <h1>🎬 Welcome to Aftab Movies Hub</h1>
+  <button onclick="logout()" style="background:gray">Logout</button>
+  
+  <div class="video">
+    <h3>Video 1</h3>
+    <iframe width="320" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+  </div>
+  
+  <div class="video">
+    <h3>Video 2</h3>
+    <iframe width="320" height="200" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://ehymzqskttxsbaffjdui.supabase.co'
+const SUPABASE_ANON_KEY = sb_publishable_izb6J9dvLLcpRrTiZkGodg_-tcdiDD_
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+function showSignup(){ 
+  document.getElementById('loginForm').style.display='none'; 
+  document.getElementById('signupForm').style.display='block' 
+}
+function showLogin(){ 
+  document.getElementById('signupForm').style.display='none'; 
+  document.getElementById('loginForm').style.display='block' 
+}
+
+async function signup(){
+  const email = document.getElementById('signupEmail').value
+  const password = document.getElementById('signupPass').value
+  const { error } = await supabase.from('users').insert([{ email: email, password: password }])
+  if(error){ 
+    alert('Error: ' + error.message) 
+  }
+  else{ 
+    alert('Sign Up Successful! Please Login'); 
+    showLogin() 
+  }
+}
+
+async function login(){
+  const email = document.getElementById('loginEmail').value
+  const password = document.getElementById('loginPass').value
+  const { data, error } = await supabase.from('users').select('*').eq('email', email).eq('password', password)
+  if(data && data.length > 0){ 
+    document.getElementById('authBox').style.display='none'; 
+    document.getElementById('videos').style.display='block'
+  }
+  else{ 
+    alert('Invalid Email or Password') 
+  }
+}
+
+function logout(){
+  document.getElementById('authBox').style.display='block'; 
+  document.getElementById('videos').style.display='none'
+}
+</script>
+
 </body>
 </html>
