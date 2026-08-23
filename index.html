@@ -8,7 +8,7 @@
     * {margin:0; padding:0; box-sizing:border-box;}
   body {background:#141414; color:white; font-family:Arial, sans-serif;}
   
-  /* 1. HEADER */
+  /* HEADER */
   header {
     background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
     padding:15px 4%; display:flex; align-items:center; justify-content:space-between;
@@ -17,14 +17,14 @@
   header h1 {color:red; font-size:28px; font-weight:bold;}
   nav a {color:#e5e5e5; text-decoration:none; margin:0 15px; font-size:14px;}
   nav a:hover {color:#fff;}
-  .right {display:flex; gap:20px; align-items:center;}
   
-  /* 2. HERO BANNER */
+  /* BANNER */
   .banner {
-    height:80vh; background:#000;
+    height:80vh; 
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 60%), url('https://picsum.photos/1920/1080?blur=2');
+    background-size:cover; background-position:center;
     display:flex; flex-direction:column; justify-content:center;
     padding:0 4%; margin-top:60px;
-    border-bottom:1px dashed #333;
   }
   .banner h2 {font-size:3vw; max-width:40%; margin-bottom:15px;}
   .banner p {font-size:1.2vw; max-width:40%; color:#ccc; margin-bottom:20px;}
@@ -35,16 +35,18 @@
   .btn-play {background:#fff; color:#000;}
   .btn-info {background:rgba(109,109,110,0.7); color:#fff;}
   
-  /* 3. MOVIE ROWS */
+  /* ROWS */
   .row {padding:20px 4%;}
   .row h3 {font-size:1.4vw; margin-bottom:15px;}
-  .movies {
-    display:flex; gap:8px; overflow-x:auto; overflow-y:hidden; 
-    min-height:220px; border:1px dashed #444; border-radius:4px; padding:10px 0;
-  }
+  .movies {display:flex; gap:8px; overflow-x:auto; overflow-y:hidden;}
   .movies::-webkit-scrollbar {display:none;}
   
-  /* 4. FOOTER */
+  .movie-card img {
+    height:220px; width:150px; border-radius:4px; cursor:pointer;
+    transition: transform 0.3s;
+  }
+  .movie-card img:hover {transform:scale(1.08);}
+  
   footer {text-align:center; padding:30px; color:#808080; font-size:13px;}
 </style>
 </head>
@@ -61,54 +63,58 @@
       <a href="#">My List</a>
     </nav>
   </div>
-  <div class="right">
-    <a href="#" style="color:#fff;">Search</a>
-    <a href="#" style="color:#fff;">Profile</a>
-  </div>
 </header>
 
-<!-- HERO BANNER -->
+<!-- BANNER -->
 <div class="banner">
-  <h2>Featured Movie Title</h2>
-  <p>Yahan movie ki description aayegi. 2-3 line ki story likh dena.</p>
+  <h2>Featured Movie</h2>
+  <p>Ye featured movie ki description hai. Yahan apni movie ki story likhna.</p>
   <div>
     <button class="btn-play">▶ Play</button>
     <button class="btn-info">ℹ More Info</button>
   </div>
 </div>
 
-<!-- MOVIE ROWS -->
+<!-- ROW 1 -->
 <div class="row">
   <h3>Trending Now</h3>
   <div class="movies">
-    <!-- Yahan movies add karni hain -->
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=1"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=2"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=3"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=4"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=5"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=6"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=7"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=8"></div>
   </div>
 </div>
 
+<!-- ROW 2 -->
 <div class="row">
   <h3>Action Movies</h3>
   <div class="movies">
-    <!-- Yahan movies add karni hain -->
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=9"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=10"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=11"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=12"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=13"></div>
   </div>
 </div>
 
+<!-- ROW 3 -->
 <div class="row">
   <h3>Comedy</h3>
   <div class="movies">
-    <!-- Yahan movies add karni hain -->
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=14"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=15"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=16"></div>
+    <div class="movie-card"><img src="https://picsum.photos/150/220?random=17"></div>
   </div>
 </div>
 
-<div class="row">
-  <h3>Web Series</h3>
-  <div class="movies">
-    <!-- Yahan movies add karni hain -->
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <p>© 2026 Aftab Movies Hub. Made for learning.</p>
+  <p>© 2026 Aftab Movies Hub</p>
 </footer>
 
 </body>
