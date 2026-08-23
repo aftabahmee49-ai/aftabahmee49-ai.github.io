@@ -4,139 +4,112 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aftab Movies Hub</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-body{
-  font-family:Arial; 
-  background:#111; 
-  color:white; 
-  display:flex; 
-  justify-content:center; 
-  align-items:center; 
-  min-height:100vh; 
-  margin:0; 
-  padding:20px
-}
-.box{
-  background:#222; 
-  padding:30px; 
-  border-radius:10px; 
-  width:320px; 
-  text-align:center
-}
-input{
-  width:90%; 
-  padding:10px; 
-  margin:10px 0; 
-  border:none; 
-  border-radius:5px; 
-  background:#333; 
-  color:white
-}
-button{
-  width:95%; 
-  padding:12px; 
-  background:red; 
-  color:white; 
-  border:none; 
-  border-radius:5px; 
-  cursor:pointer; 
-  font-weight:bold; 
-  font-size:16px
-}
-a{color:skyblue; cursor:pointer}
-#videos{display:none; text-align:center; width:100%}
-.video{margin:20px auto}
-h2{color:red}
+    * {margin:0; padding:0; box-sizing:border-box;}
+  body {background:#141414; color:white; font-family:Arial, sans-serif;}
+  
+  /* 1. HEADER */
+  header {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+    padding:15px 4%; display:flex; align-items:center; justify-content:space-between;
+    position:fixed; width:100%; top:0; z-index:10;
+  }
+  header h1 {color:red; font-size:28px; font-weight:bold;}
+  nav a {color:#e5e5e5; text-decoration:none; margin:0 15px; font-size:14px;}
+  nav a:hover {color:#fff;}
+  .right {display:flex; gap:20px; align-items:center;}
+  
+  /* 2. HERO BANNER */
+  .banner {
+    height:80vh; background:#000;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:0 4%; margin-top:60px;
+    border-bottom:1px dashed #333;
+  }
+  .banner h2 {font-size:3vw; max-width:40%; margin-bottom:15px;}
+  .banner p {font-size:1.2vw; max-width:40%; color:#ccc; margin-bottom:20px;}
+  .banner button {
+    padding:10px 25px; margin-right:10px; font-size:16px; font-weight:bold;
+    border:none; border-radius:4px; cursor:pointer;
+  }
+  .btn-play {background:#fff; color:#000;}
+  .btn-info {background:rgba(109,109,110,0.7); color:#fff;}
+  
+  /* 3. MOVIE ROWS */
+  .row {padding:20px 4%;}
+  .row h3 {font-size:1.4vw; margin-bottom:15px;}
+  .movies {
+    display:flex; gap:8px; overflow-x:auto; overflow-y:hidden; 
+    min-height:220px; border:1px dashed #444; border-radius:4px; padding:10px 0;
+  }
+  .movies::-webkit-scrollbar {display:none;}
+  
+  /* 4. FOOTER */
+  footer {text-align:center; padding:30px; color:#808080; font-size:13px;}
 </style>
 </head>
 <body>
 
-<div class="box" id="authBox">
-  <h2>🎬 Aftab Movies Hub</h2>
-  <div id="loginForm">
-    <h3>Login</h3>
-    <input type="email" id="loginEmail" placeholder="Enter Email">
-    <input type="password" id="loginPass" placeholder="Enter Password">
-    <button onclick="login()">Login</button>
-    <p>Don't have an account? <a onclick="showSignup()">Sign Up</a></p>
+<!-- HEADER -->
+<header>
+  <div style="display:flex; align-items:center;">
+    <h1>AFTAB</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">Series</a>
+      <a href="#">My List</a>
+    </nav>
   </div>
-  
-  <div id="signupForm" style="display:none">
-    <h3>Sign Up</h3>
-    <input type="email" id="signupEmail" placeholder="Enter Email">
-    <input type="password" id="signupPass" placeholder="Enter Password">
-    <button onclick="signup()">Sign Up</button>
-    <p>Already have an account? <a onclick="showLogin()">Login</a></p>
+  <div class="right">
+    <a href="#" style="color:#fff;">Search</a>
+    <a href="#" style="color:#fff;">Profile</a>
   </div>
-</div>
+</header>
 
-<div id="videos">
-  <h1>🎬 Welcome to Aftab Movies Hub</h1>
-  <button onclick="logout()" style="background:gray">Logout</button>
-  
-  <div class="video">
-    <h3>Video 1</h3>
-    <iframe width="320" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-  </div>
-  
-  <div class="video">
-    <h3>Video 2</h3>
-    <iframe width="320" height="200" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allowfullscreen></iframe>
+<!-- HERO BANNER -->
+<div class="banner">
+  <h2>Featured Movie Title</h2>
+  <p>Yahan movie ki description aayegi. 2-3 line ki story likh dena.</p>
+  <div>
+    <button class="btn-play">▶ Play</button>
+    <button class="btn-info">ℹ More Info</button>
   </div>
 </div>
 
-<script>
-const SUPABASE_URL = 'https://ehymzqskttxsbaffjdui.supabase.co'
-const SUPABASE_ANON_KEY = sb_publishable_izb6J9dvLLcpRrTiZkGodg_-tcdiDD_
+<!-- MOVIE ROWS -->
+<div class="row">
+  <h3>Trending Now</h3>
+  <div class="movies">
+    <!-- Yahan movies add karni hain -->
+  </div>
+</div>
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+<div class="row">
+  <h3>Action Movies</h3>
+  <div class="movies">
+    <!-- Yahan movies add karni hain -->
+  </div>
+</div>
 
-function showSignup(){ 
-  document.getElementById('loginForm').style.display='none'; 
-  document.getElementById('signupForm').style.display='block' 
-}
-function showLogin(){ 
-  document.getElementById('signupForm').style.display='none'; 
-  document.getElementById('loginForm').style.display='block' 
-}
+<div class="row">
+  <h3>Comedy</h3>
+  <div class="movies">
+    <!-- Yahan movies add karni hain -->
+  </div>
+</div>
 
-async function signup(){
-  const email = document.getElementById('signupEmail').value
-  const password = document.getElementById('signupPass').value
-  const { error } = await supabase.from('users').insert([{ email: email, password: password }])
-  if(error){ 
-    alert('Error: ' + error.message) 
-  }
-  else{ 
-    alert('Sign Up Successful! Please Login'); 
-    showLogin() 
-  }
-}
-async function login(){
-  const email = document.getElementById('loginEmail').value
-  const password = document.getElementById('loginPass').value
-  const { data, error } = await supabase.from('users').select('*').eq('email', email).eq('password', password)
-  if(error){
-    alert('DB Error: ' + error.message)
-    return
-  }
-  if(data && data.length > 0){ 
-    document.getElementById('authBox').style.display='none'; 
-    document.getElementById('videos').style.display='block'
-  }
-  else{ 
-    alert('Invalid Email or Password') 
-  }
-}
+<div class="row">
+  <h3>Web Series</h3>
+  <div class="movies">
+    <!-- Yahan movies add karni hain -->
+  </div>
+</div>
 
-}
-
-function logout(){
-  document.getElementById('authBox').style.display='block'; 
-  document.getElementById('videos').style.display='none'
-}
-</script>
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Aftab Movies Hub. Made for learning.</p>
+</footer>
 
 </body>
 </html>
